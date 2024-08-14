@@ -18,11 +18,11 @@ private:
     SDL_Texture* texture;
     SDL_Renderer* renderer;
 
-    static bool Init();
-    static bool LoadMedia();
+    bool Init();
+    bool LoadMedia();
     SDL_Texture* LoadTexture(const char*);
-    static void EventHandler();
-    static void Close();
+    void EventHandler();
+    void Close();
 };
 
 #endif
