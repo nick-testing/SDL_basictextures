@@ -60,3 +60,15 @@ SDL_Texture* Game::LoadTexture(const char* filepath) {
 
     return newTexture;
 }
+
+bool Game::LoadMedia() {
+    bool success = true;
+
+    texture = LoadTexture("assets/texture.png");
+    if (!texture) {
+        std::cerr << "Failed ot load texture, SDL error: " << SDL_GetError() << std::endl;
+        success = false;
+    }
+    
+    return success;
+}
