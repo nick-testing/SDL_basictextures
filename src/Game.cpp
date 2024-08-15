@@ -73,6 +73,25 @@ bool Game::LoadMedia() {
     return success;
 }
 
+void Game::EventHandler() {
+    bool quit = false;
+    SDL_Event e;
+
+    while (!quit) {
+        while (SDL_PollEvent(&e) != 0) {
+            if (SDL_QUIT == e.type) {
+                quit = true;
+            }
+        }
+
+        SDL_RenderClear(renderer);
+
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+
+        SDL_RenderPresent(renderer);
+    }
+}
+
 void Game::Close() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(texture);
