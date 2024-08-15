@@ -75,7 +75,30 @@ void Game::EventHandler() {
     }
 }
 
+void Game::Close() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(texture);
+    SDL_DestroyWindow(window);
+
+    renderer = nullptr;
+    texture = nullptr;
+    window = nullptr;
+
+    SDL_Quit();
+    IMG_Quit();
+}
+
+void Game::Run() {
+    if (Init()) {
+        LoadMedia();
+        EventHandler();
+    }
+
+    Close();
+}
+
 void Game::RenderTexture() {
+        // Make screen white after render clear
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
         
@@ -101,26 +124,4 @@ void Game::RenderTexture() {
         }
 
         SDL_RenderPresent(renderer);
-}
-
-void Game::Close() {
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyTexture(texture);
-    SDL_DestroyWindow(window);
-
-    renderer = nullptr;
-    texture = nullptr;
-    window = nullptr;
-
-    SDL_Quit();
-    IMG_Quit();
-}
-
-void Game::Run() {
-    if (Init()) {
-        LoadMedia();
-        EventHandler();
-    }
-
-    Close();
 }
