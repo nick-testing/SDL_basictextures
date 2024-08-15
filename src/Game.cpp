@@ -104,3 +104,12 @@ void Game::Close() {
     SDL_Quit();
     IMG_Quit();
 }
+
+void Game::Run() {
+    if (Init()) {
+        LoadMedia();
+        EventHandler();
+    }
+
+    Close();
+}
