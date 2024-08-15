@@ -8,6 +8,12 @@
 
 Game::Game(): window(NULL), texture(NULL), renderer(NULL) {};
 
+/**
+ * Initialize SDL and SDL_image libraries.
+ * Init() also creates an SDL window and a hardware accelerated SDL renderer for that window.
+ * 
+ * \return true on succes, false on failure
+ */
 bool Game::Init() {
     bool success = true;
 
@@ -42,12 +48,24 @@ bool Game::Init() {
     return success;
 }
 
+/**
+ * Attempts to load a texture from a received file path
+ * \todo perhaps merge into LoadMedia
+ * 
+ * \return Loaded SDL_Texture on success, NULL on failure
+ */
 SDL_Texture* Game::LoadTexture(const char* filepath) {
     SDL_Texture* newTexture = IMG_LoadTexture(renderer, filepath);
 
     return newTexture;
 }
 
+/**
+ * Loads texture(s) from predetermined files
+ * in case of failure, prints error to stderr 
+ * 
+ * \return true on success, false otherwise
+ */
 bool Game::LoadMedia() {
     bool success = true;
 
@@ -60,6 +78,9 @@ bool Game::LoadMedia() {
     return success;
 }
 
+/**
+ * Program loop, executes rendering action until an SDL_QUIT event is received
+ */
 void Game::EventHandler() {
     bool quit = false;
     SDL_Event e;
@@ -75,6 +96,10 @@ void Game::EventHandler() {
     }
 }
 
+/**
+ * Closing function, deallocates window(s), loaded texture(s) and renderer(s).
+ * Quits SDL and SDL_Image subsystems
+ */
 void Game::Close() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(texture);
@@ -88,6 +113,11 @@ void Game::Close() {
     IMG_Quit();
 }
 
+/**
+ * Core API function, calls initialization then proceeds with loading media(textures etc.)
+ * and passing control over to the main loop.
+ * When execution is done, frees all allocated resources using Game::Close().
+ */
 void Game::Run() {
     if (Init()) {
         LoadMedia();
