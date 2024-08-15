@@ -25,7 +25,7 @@ private:
     void Close();
 
     void RenderTexture();
-    void RenderViewPort();
+    void RenderViewport();
 };
 
 #endif

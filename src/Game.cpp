@@ -71,7 +71,7 @@ void Game::EventHandler() {
             }
         }
         
-        RenderTexture();
+        RenderViewport();
     }
 }
 
@@ -124,4 +124,23 @@ void Game::RenderTexture() {
         }
 
         SDL_RenderPresent(renderer);
+}
+
+void Game::RenderViewport() {
+    SDL_RenderClear(renderer);
+
+    SDL_Rect topLeftViewport = {0, 0, SCREEN_WIDTH / 2 - 1, SCREEN_HEIGHT / 2 - 1};
+    SDL_RenderSetViewport(renderer, &topLeftViewport);
+    // Render texture to screen
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+
+    SDL_Rect topRightViewport = {SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 1};
+    SDL_RenderSetViewport(renderer, &topRightViewport);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+
+    SDL_Rect bottomViewport = {0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2};
+    SDL_RenderSetViewport(renderer, &bottomViewport);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+
+    SDL_RenderPresent(renderer);
 }
