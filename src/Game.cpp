@@ -127,6 +127,9 @@ void Game::Run() {
     Close();
 }
 
+/**
+ * Renders a filled rectangle, a hollow rectangle, a dotted line and a continuous line
+ */
 void Game::RenderTexture() {
         // Make screen white after render clear
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, SDL_ALPHA_OPAQUE);
