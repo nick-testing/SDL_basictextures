@@ -145,7 +145,7 @@ void Game::RenderTexture() {
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MIN_VAL, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MIN_VAL, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawRect(renderer, &outlineRect);
 
-        // Render a vertical blue line spanning the width of the window
+        // Render vertical blue line spanning the width of the window
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MIN_VAL, COLOR_CHANNEL_MIN_VAL, COLOR_CHANNEL_MAX_VAL, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawLine(renderer, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2);
 
