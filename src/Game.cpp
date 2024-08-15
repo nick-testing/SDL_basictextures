@@ -71,6 +71,11 @@ void Game::EventHandler() {
             }
         }
         
+        RenderTexture();
+    }
+}
+
+void Game::RenderTexture() {
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MAX_VAL, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
         
@@ -96,7 +101,6 @@ void Game::EventHandler() {
         }
 
         SDL_RenderPresent(renderer);
-    }
 }
 
 void Game::Close() {

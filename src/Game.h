@@ -23,6 +23,9 @@ private:
     SDL_Texture* LoadTexture(const char*);
     void EventHandler();
     void Close();
+
+    void RenderTexture();
+    void RenderViewPort();
 };
 
 #endif
