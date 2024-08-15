@@ -72,3 +72,16 @@ bool Game::LoadMedia() {
     
     return success;
 }
+
+void Game::Close() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(texture);
+    SDL_DestroyWindow(window);
+
+    renderer = nullptr;
+    texture = nullptr;
+    window = nullptr;
+
+    SDL_Quit();
+    IMG_Quit();
+}
