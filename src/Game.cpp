@@ -80,7 +80,7 @@ void Game::EventHandler() {
         SDL_RenderFillRect(renderer, &fillRect);
 
         // Render a hollow rectangle
-        SDL_Rect outlineRect = {SCREEN_WIDTH / 8, SCREEN_HEIGHT / 8,SCREEN_WIDTH / 2 + SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4};
+        SDL_Rect outlineRect = {SCREEN_WIDTH / 8, SCREEN_HEIGHT / 8, (SCREEN_WIDTH * 3) / 4, (SCREEN_HEIGHT * 3) / 4};
         SDL_SetRenderDrawColor(renderer, COLOR_CHANNEL_MIN_VAL, COLOR_CHANNEL_MAX_VAL, COLOR_CHANNEL_MIN_VAL, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawRect(renderer, &outlineRect);
 
