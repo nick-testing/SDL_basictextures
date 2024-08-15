@@ -3,6 +3,9 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#define COLOR_CHANNEL_MAX_VALUE (0xFF)
+#define COLOR_CHANNEL_MIN_VALUE (0x00)
+
 Game::Game(): window(NULL), texture(NULL), renderer(NULL) {};
 
 bool Game::Init() {
@@ -70,12 +73,8 @@ void Game::EventHandler() {
                 quit = true;
             }
         }
+        
 
-        SDL_RenderClear(renderer);
-
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
-
-        SDL_RenderPresent(renderer);
     }
 }
 
