@@ -42,10 +42,6 @@ bool Game::Init() {
     return success;
 }
 
-/*
-    @todo: Try to use the IMG_LoadTexture API as seen in LazyFoo 007
-    https://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
-*/
 SDL_Texture* Game::LoadTexture(const char* filepath) {
     SDL_Texture* newTexture = IMG_LoadTexture(renderer, filepath);
 
